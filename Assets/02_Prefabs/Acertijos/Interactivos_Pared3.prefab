@@ -200,7 +200,7 @@ MonoBehaviour:
   nombreObjeto: "F\xF3sforos"
   iconoInventario: {fileID: -1674998404535957075, guid: 61db5468373cd1143bd0e29a03702d52, type: 3}
   mensajeAlRecoger: "F\xF3sforos."
-  sonidoAlRecoger: {fileID: 0}
+  sonidoAlRecoger: {fileID: 8300000, guid: 6e4ecb6216adb1c44afad15c6ea0ac15, type: 3}
 --- !u!1 &1486550752920338523
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,7 +453,7 @@ MonoBehaviour:
   - {fileID: 6863708137881460860, guid: 83775a32fc9fba843993801ee46330fe, type: 3}
   dibujoRueda: {fileID: 7897386877132370016}
   textoNumero: {fileID: 0}
-  sonidoGirar: {fileID: 0}
+  sonidoGirar: {fileID: 8300000, guid: 0c0a6b21f89be454289627bb2e46e276, type: 3}
 --- !u!1 &1697094656330289163
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +610,7 @@ MonoBehaviour:
   nombreObjeto: Pieza de escalera
   iconoInventario: {fileID: -6541297594983287438, guid: 7d48118893a8df84abfda56277c2079e, type: 3}
   mensajeAlRecoger: Un pedazo de escalera de pan.
-  sonidoAlRecoger: {fileID: 0}
+  sonidoAlRecoger: {fileID: 8300000, guid: 6e4ecb6216adb1c44afad15c6ea0ac15, type: 3}
 --- !u!1 &1701439558158537356
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +771,7 @@ MonoBehaviour:
   - {fileID: 6863708137881460860, guid: 83775a32fc9fba843993801ee46330fe, type: 3}
   dibujoRueda: {fileID: 8888970331698333886}
   textoNumero: {fileID: 0}
-  sonidoGirar: {fileID: 0}
+  sonidoGirar: {fileID: 8300000, guid: 0c0a6b21f89be454289627bb2e46e276, type: 3}
 --- !u!1 &2457894764348242355
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +928,7 @@ MonoBehaviour:
   nombreObjeto: T'antawawa
   iconoInventario: {fileID: 1639969676633806831, guid: 7a3be93030fa51945b7d74f8e66783dc, type: 3}
   mensajeAlRecoger: "Una t'antawawa\u2026 tiene la cara de la abuela."
-  sonidoAlRecoger: {fileID: 0}
+  sonidoAlRecoger: {fileID: 8300000, guid: 6e4ecb6216adb1c44afad15c6ea0ac15, type: 3}
 --- !u!1 &2733046513228306560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,8 +1554,8 @@ MonoBehaviour:
   indiceCorrecto: 3
   textoDial: {fileID: 7971598276385827514}
   fuenteRadio: {fileID: 4658283607857023180}
-  sonidoEstatica: {fileID: 0}
-  vozAbuela: {fileID: 0}
+  sonidoEstatica: {fileID: 8300000, guid: ee8e6b02e52ed8c4d88d6ea1f1e86be1, type: 3}
+  vozAbuela: {fileID: 8300000, guid: 96f0d287104f60b49baac4eb80b586bf, type: 3}
   sonidoClicPerilla: {fileID: 0}
   mensajeEstatica: "Solo se escucha est\xE1tica\u2026"
   mensajeSintonizada: "\"\xBFPor qu\xE9 nadie viene, wawa?\u2026 cuatro\u2026 uno\u2026
@@ -1747,7 +1747,7 @@ MonoBehaviour:
   - {fileID: 6863708137881460860, guid: 83775a32fc9fba843993801ee46330fe, type: 3}
   dibujoRueda: {fileID: 3368751434641998583}
   textoNumero: {fileID: 0}
-  sonidoGirar: {fileID: 0}
+  sonidoGirar: {fileID: 8300000, guid: 0c0a6b21f89be454289627bb2e46e276, type: 3}
 --- !u!1 &6999298882225763393
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,7 +1890,7 @@ MonoBehaviour:
   - {fileID: 655138798771906934}
   combinacionCorrecta: 000000000100000002000000
   mensajeAlAbrir: "El candado se abri\xF3. Huele a pan reci\xE9n horneado."
-  sonidoAlAbrir: {fileID: 0}
+  sonidoAlAbrir: {fileID: 8300000, guid: 977f7578a8b34614b865b6cd36dfc224, type: 3}
   alAbrir:
     m_PersistentCalls:
       m_Calls:

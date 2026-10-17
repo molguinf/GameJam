@@ -213,7 +213,7 @@ MonoBehaviour:
   dibujoRetrato: {fileID: 2197664976088101506}
   fotoAbuela: {fileID: 2874413911062252435, guid: e466e9320eac2a541b2e0137d8deeaac, type: 3}
   mensajeRetrato: "Es\u2026 la abuela."
-  sonidoCampanada: {fileID: 0}
+  sonidoCampanada: {fileID: 8300000, guid: 5b938474f1c5d234a9b0938cc010df75, type: 3}
   cantidadCampanadas: 12
   segundosEntreCampanadas: 0.8
   nombreEscenaDespertar: Despertar
@@ -378,7 +378,7 @@ MonoBehaviour:
   idObjetoNecesario: fosforos
   consumirObjeto: 1
   soloUnaVez: 1
-  sonidoExito: {fileID: 0}
+  sonidoExito: {fileID: 8300000, guid: 8d0e545394c58d8478aeb60318387782, type: 3}
   alTenerExito:
     m_PersistentCalls:
       m_Calls:
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   nombreObjeto: Pieza de escalera
   iconoInventario: {fileID: 3721785287662569002, guid: 31b42ff24ac67cb45b2805c8bb2f4085, type: 3}
   mensajeAlRecoger: Un pedazo de escalera de pan.
-  sonidoAlRecoger: {fileID: 0}
+  sonidoAlRecoger: {fileID: 8300000, guid: 6e4ecb6216adb1c44afad15c6ea0ac15, type: 3}
 --- !u!1 &6853508442663670994
 GameObject:
   m_ObjectHideFlags: 0

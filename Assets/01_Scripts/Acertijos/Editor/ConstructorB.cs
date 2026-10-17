@@ -187,6 +187,9 @@ namespace Volviste.Herramientas
             }
             Cerradura(cerr, ruedas, new[] { 0, 1, 2 }, "El candado se abrió. Huele a pan recién horneado.",
                       new[] { hornoAb, tanta }, ruedas);
+            var hornoClip = Clip("sfx_horno_abre");
+            if (hornoClip != null && !Ref(cerr, hornoClip, false, "horno", "sonido+abrir", "sonido+puerta", "sonido+extra", "sonido2", "clip", "audio"))
+                notas.Add("sfx_horno_abre: CandadoHorno no tiene otro campo de sonido (ya usa sfx_candado_abre). Si hace falta, se agrega a mano.");
 
             // Radio
             var radio = Obj(p, "Radio", 6.5f, 0.9f, "Radio", 5, true);
@@ -238,7 +241,8 @@ namespace Volviste.Herramientas
             // Vela
             var vela = Obj(p, "Vela", -4f, -0.4f, "Vela_Apagada", 5, true);
             var ev = Evento(Zona(vela, "fosforos", "La vela está apagada. Necesito algo para encenderla.",
-                                 "La llama tiembla… y en la pared aparecen un sol, una luna y una estrella."), true, EXITO);
+                                 "La llama tiembla… y en la pared aparecen un sol, una luna y una estrella.",
+                                 sonido: Clip("sfx_fosforo")), true, EXITO);
             Prender(ev, velaOn, true); Prender(ev, simbolos, true); Prender(ev, vela, false); Llamar(ev, mts, "ColocarObjeto");
 
             // Huecos
@@ -274,7 +278,7 @@ namespace Volviste.Herramientas
             Zona(notaR, null, "La letra cambió: \"¿Por qué nadie vino?\"", null, false, true);
 
             var puerta = ZonaSinDibujo(p, "Puerta", -0.3f, -0.5f, new Vector2(3f, 6f), 1, Vector2.zero);
-            Zona(puerta, null, "Está cerrada. Afuera no se escucha nada.", null, false, true);
+            Zona(puerta, null, "Está cerrada. Afuera no se escucha nada.", null, false, true, Clip("sfx_puerta_cruje"));
 
             var calN = Obj(p, "Calendario_Normal", 6.9f, 0.7f, "Calendario_Normal", 5);
             var calT1 = Obj(p, "Calendario_Tachado_1", 6.9f, 0.7f, "Calendario_Tachado_1", 6, false, false);
@@ -382,6 +386,7 @@ namespace Volviste.Herramientas
             TextoUI(bGO.transform, "Texto", "Volver al inicio / Back to start", 34f, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
 
             var fundido = Imagen(cv, "ImagenFundido", null, new Color(0f, 0f, 0f, 0f), false);
+            panel.transform.SetAsLastSibling(); // PanelFinal va encima del fundido (si no, el negro tapa los textos)
             panel.gameObject.SetActive(false);
 
             var esGO = new GameObject("EventSystem", typeof(EventSystem));
@@ -436,10 +441,11 @@ namespace Volviste.Herramientas
 
         // ============================== PIEZAS ==============================
 
-        static Component Zona(GameObject go, string necesita, string mirar, string exito, bool unaVez = true, bool soloMirar = false)
+        static Component Zona(GameObject go, string necesita, string mirar, string exito, bool unaVez = true, bool soloMirar = false, AudioClip sonido = null)
         {
             var c = Script(go, "ZonaInteractiva");
             if (c == null) return null;
+            if (sonido != null) Ref(c, sonido, false, "sonido+exito", "sonido", "clip", "audio");
             if (!string.IsNullOrEmpty(necesita))
                 Texto(c, necesita, true, "id+necesario", "objeto+necesario", "necesario", "necesita", "requerido", "id+requerido", "id+objeto", "objeto+id", "id");
             Texto(c, T(mirar), true, "mirar", "descripcion", "inspeccion", "observar");
@@ -567,8 +573,13 @@ namespace Volviste.Herramientas
                         if (clip == null) continue;
                         var fS = PonerPlano(inst, campos, usados, clip, new[] { "voz", "sonido", "clip", "audio" }, true);
                         if (fS != null) puestos.Add(fS.Name + "=" + clip.name);
-                        else Aviso("Pantalla " + i + ": no hay otro campo de sonido para '" + clip.name + "'.");
+                        else notas.Add("Pantalla " + i + ": no hay otro campo de sonido para '" + clip.name + "' (está bien, A pidió solo la voz).");
                     }
+                foreach (var fb in campos.Where(x => x.FieldType == typeof(bool) && Norm(x.Name).Contains("esperar")))
+                {
+                    fb.SetValue(inst, true); // "Esperar Clic" marcado en todas
+                    puestos.Add(fb.Name + "=true");
+                }
                 items.Add(inst);
                 detalle.Append("  Pantalla " + i + ": " + (puestos.Count == 0 ? "(nada)" : string.Join(", ", puestos)) + "\n");
             }
