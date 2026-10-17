@@ -8,6 +8,9 @@
 //   1 = Pared 2 · La puerta
 //   2 = Pared 3 · La cocina
 //   3 = Pared 4 · El ropero
+//
+// Al girar de pared se borra el mensaje de abajo, para que no se quede
+// un texto de otra pared (ej: "Hay fósforos adentro" en el ropero).
 // =====================================================================
 
 using UnityEngine;
@@ -45,6 +48,7 @@ public class ControlParedes : MonoBehaviour
             nuevaPared = 0;
         }
         MostrarPared(nuevaPared);
+        BorrarMensaje();
         ReproducirSonidoGiro();
     }
 
@@ -60,6 +64,7 @@ public class ControlParedes : MonoBehaviour
             nuevaPared = paredes.Length - 1;
         }
         MostrarPared(nuevaPared);
+        BorrarMensaje();
         ReproducirSonidoGiro();
     }
 
@@ -88,6 +93,14 @@ public class ControlParedes : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void BorrarMensaje()
+    {
+        if (GameManager.Instancia != null)
+        {
+            GameManager.Instancia.OcultarMensaje();
+        }
     }
 
     private void ReproducirSonidoGiro()
