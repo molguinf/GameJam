@@ -47,6 +47,7 @@ namespace Volviste.Herramientas
 
         static readonly List<string> avisos = new List<string>();
         static readonly List<string> sonidosFaltan = new List<string>();
+        static readonly List<string> notas = new List<string>();
         static readonly HashSet<string> camposUsados = new HashSet<string>();
         static readonly Dictionary<string, Sprite> cacheSprites = new Dictionary<string, Sprite>();
         static readonly Dictionary<string, AudioClip> cacheAudio = new Dictionary<string, AudioClip>();
@@ -395,14 +396,26 @@ namespace Volviste.Herramientas
                 T("Te esperó para Todos Santos."),
                 T("No esperes a que sea tarde para visitar a los que todavía están aquí.")
             }, true, "lineas+finales", "textos+finales", "final", "creditos", "epilogo");
-            ListaTextos(seq, new[]
+            var textosPantallas = new[]
             {
                 T("…no otra vez."),
                 T("Abuelita: \"¿Vas a venir para Todos Santos, wawa?\"\n28 de octubre · Visto"),
                 T("\"Volviste, wawa…\""),
                 T("¿Abuela?")
-            }, true, "subtitulos", "textos", "lineas", "dialogos", "textos+pantallas");
-            ListaObjetos(seq, pantallas, true, "pantallas", "imagenes", "escenas", "paneles");
+            };
+            var sonidosPantallas = new[]
+            {
+                new AudioClip[0],
+                new AudioClip[0],
+                new[] { Clip("voz_abuela_volviste"), Clip("sfx_gato_maullido") },
+                new AudioClip[0]
+            };
+            if (!ListaPantallas(seq, pantallas, textosPantallas, sonidosPantallas))
+            {
+                ListaTextos(seq, textosPantallas, true, "subtitulos", "textos", "lineas", "dialogos", "textos+pantallas");
+                ListaObjetos(seq, pantallas, true, "pantallas", "imagenes", "escenas", "paneles");
+            }
+            Ref(seq, bGO, false, "boton+volver", "boton");
             Ref(seq, texFin, true, "texto+final", "final+texto");
             Ref(seq, sub, true, "subtitulo", "texto+subtitulo", "texto");
             Ref(seq, ind, false, "indicador", "clic");
@@ -512,6 +525,84 @@ namespace Volviste.Herramientas
             Entero(c, etapa, true, "etapa", "nivel", "paso", "orden");
             if (normal != null) Ref(c, normal, true, "normal", "version+normal", "original");
             Ref(c, rara, true, "rara", "raro", "version+rara", "anomalia", "extrano", "cambiado");
+        }
+
+        // Llena una lista de clases simples (por ejemplo PantallaDespertar[]):
+        // crea un elemento por pantalla y le pone su imagen, su texto y sus sonidos.
+        static bool ListaPantallas(Component seq, List<Object> pantallas, string[] textos, AudioClip[][] sonidos)
+        {
+            if (seq == null) return false;
+            FieldInfo campoLista = null;
+            Type tipoP = null;
+            foreach (var f in Campos(seq.GetType()))
+            {
+                Type e;
+                if (!Norm(f.Name).Contains("pantalla") || !EsLista(f.FieldType, out e)) continue;
+                if (typeof(Object).IsAssignableFrom(e) || !e.IsClass || e == typeof(string)) continue;
+                campoLista = f; tipoP = e; break;
+            }
+            if (campoLista == null) return false;
+
+            var campos = Campos(tipoP);
+            var detalle = new StringBuilder();
+            var items = new List<object>();
+            for (int i = 0; i < pantallas.Count; i++)
+            {
+                object inst;
+                try { inst = Activator.CreateInstance(tipoP); }
+                catch (Exception ex) { Aviso("No pude crear " + tipoP.Name + ": " + ex.Message); return false; }
+                var usados = new HashSet<FieldInfo>();
+                var puestos = new List<string>();
+
+                var fImg = PonerPlano(inst, campos, usados, pantallas[i], new[] { "imagen", "pantalla", "objeto", "panel", "fondo", "dibujo" }, true);
+                if (fImg != null) puestos.Add(fImg.Name + "=" + pantallas[i].name);
+                if (i < textos.Length)
+                {
+                    var fTx = PonerPlano(inst, campos, usados, textos[i], new[] { "subtitulo", "texto", "linea", "dialogo", "mensaje" }, true);
+                    if (fTx != null) puestos.Add(fTx.Name + "=texto");
+                }
+                if (i < sonidos.Length)
+                    foreach (var clip in sonidos[i])
+                    {
+                        if (clip == null) continue;
+                        var fS = PonerPlano(inst, campos, usados, clip, new[] { "voz", "sonido", "clip", "audio" }, true);
+                        if (fS != null) puestos.Add(fS.Name + "=" + clip.name);
+                        else Aviso("Pantalla " + i + ": no hay otro campo de sonido para '" + clip.name + "'.");
+                    }
+                items.Add(inst);
+                detalle.Append("  Pantalla " + i + ": " + (puestos.Count == 0 ? "(nada)" : string.Join(", ", puestos)) + "\n");
+            }
+            campoLista.SetValue(seq, CrearLista(campoLista.FieldType, tipoP, items));
+            camposUsados.Add(Clave(seq, campoLista));
+            EditorUtility.SetDirty(seq);
+            notas.Add(tipoP.Name + " tiene: " + string.Join(", ", campos.Select(f => f.Name + ":" + NombreTipo(f.FieldType))) + "\n" + detalle);
+            return true;
+        }
+
+        static FieldInfo PonerPlano(object inst, List<FieldInfo> campos, HashSet<FieldInfo> usados, object valor, string[] patrones, bool siHayUnoSolo)
+        {
+            Func<FieldInfo, object> conv = f =>
+            {
+                if (valor is string) return f.FieldType == typeof(string) ? valor : null;
+                if (valor is Object && typeof(Object).IsAssignableFrom(f.FieldType)) return Convertir((Object)valor, f.FieldType);
+                return null;
+            };
+            var aptos = campos.Where(f => !usados.Contains(f) && !EsNulo(conv(f))).ToList();
+            FieldInfo elegido = null;
+            foreach (bool exacto in new[] { true, false })
+            {
+                foreach (var p in patrones)
+                {
+                    elegido = aptos.FirstOrDefault(f => Coincide(Norm(f.Name), p, exacto));
+                    if (elegido != null) break;
+                }
+                if (elegido != null) break;
+            }
+            if (elegido == null && siHayUnoSolo && aptos.Count == 1) elegido = aptos[0];
+            if (elegido == null) return null;
+            elegido.SetValue(inst, conv(elegido));
+            usados.Add(elegido);
+            return elegido;
         }
 
         static string T(string es)
@@ -975,6 +1066,7 @@ namespace Volviste.Herramientas
         {
             avisos.Clear();
             sonidosFaltan.Clear();
+            notas.Clear();
             camposUsados.Clear();
             cacheSprites.Clear();
             cacheAudio.Clear();
@@ -991,6 +1083,7 @@ namespace Volviste.Herramientas
                 sb.AppendLine(lista.Count + " cosas para revisar:");
                 foreach (var a in lista) sb.AppendLine("• " + a);
             }
+            foreach (var n in notas) sb.AppendLine("Detalle: " + n);
             if (sonidosFaltan.Count > 0)
                 sb.AppendLine("Sonidos que todavía no están en 04_Audio (vuelve a construir cuando lleguen): " + string.Join(", ", sonidosFaltan.Distinct()));
             var texto = sb.ToString();
