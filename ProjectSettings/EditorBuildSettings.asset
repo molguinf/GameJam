@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/00_Scenes/Volviste.unity
+    guid: 4a62c53b9a234d44cafa41eb05723682
+  - enabled: 1
+    path: Assets/00_Scenes/Despertar.unity
+    guid: 31b8b735916b72d4497c1e2d0d345128
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
