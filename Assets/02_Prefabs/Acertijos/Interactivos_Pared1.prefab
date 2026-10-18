@@ -101,6 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1842436150671243266}
+  - component: {fileID: 6649827893896130960}
   m_Layer: 0
   m_Name: Interactivos_Pared1
   m_TagString: Untagged
@@ -136,6 +137,51 @@ Transform:
   - {fileID: 1742374109966169926}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6649827893896130960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2255406360870194786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f85aa268946ac4a81b3231d6adaff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PistaAlEntrar
+  pistas:
+  - mensaje: "Est\xE1 muy oscuro aqu\xED."
+    requiereActivo: {fileID: 3280286801190377186}
+    requiereInactivo: {fileID: 0}
+    soloUnaVez: 0
+    yaMostrada: 0
+    ultimaVez: -9999
+  - mensaje: "Una esquina del mantel est\xE1 levantada."
+    requiereActivo: {fileID: 5619358429834098966}
+    requiereInactivo: {fileID: 0}
+    soloUnaVez: 0
+    yaMostrada: 0
+    ultimaVez: -9999
+  - mensaje: La mesa sigue incompleta.
+    requiereActivo: {fileID: 6175427432775238195}
+    requiereInactivo: {fileID: 0}
+    soloUnaVez: 0
+    yaMostrada: 0
+    ultimaVez: -9999
+  - mensaje: La mesa sigue incompleta.
+    requiereActivo: {fileID: 7923650375213706557}
+    requiereInactivo: {fileID: 0}
+    soloUnaVez: 0
+    yaMostrada: 0
+    ultimaVez: -9999
+  - mensaje: La mesa sigue incompleta.
+    requiereActivo: {fileID: 6181522464941505378}
+    requiereInactivo: {fileID: 0}
+    soloUnaVez: 0
+    yaMostrada: 0
+    ultimaVez: -9999
+  segundosDeEspera: 0.4
+  segundosParaRepetir: 45
 --- !u!1 &2570691873453065386
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,9 +416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5731577b51e10964999a13ca8c54806a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZonaInteractiva
-  mensajeAlMirar: "La vela est\xE1 apagada. Necesito algo para encenderla."
+  mensajeAlMirar: "Est\xE1 apagada."
   mensajeExito: "La llama tiembla\u2026 y en la pared aparecen un sol, una luna y
-    una estrella."
+    una estrella.\n<i>\u2026algo cambi\xF3 en la casa.</i>"
   mensajeObjetoIncorrecto: "Eso no sirve aqu\xED."
   mensajeDespuesDeUsar: 
   idObjetoNecesario: fosforos
@@ -642,7 +688,7 @@ Transform:
   m_GameObject: {fileID: 5619358429834098966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4, y: -3.3, z: 0}
+  m_LocalPosition: {x: 3.4, y: -2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -752,7 +798,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.4, y: 1.2}
+  m_Size: {x: 2.6, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &8462352201458811974
 MonoBehaviour:
@@ -767,7 +813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZonaInteractiva
   mensajeAlMirar: 
-  mensajeExito: "Debajo del mantel hay algo\u2026"
+  mensajeExito: Debajo del mantel hay algo.
   mensajeObjetoIncorrecto: "Eso no sirve aqu\xED."
   mensajeDespuesDeUsar: 
   idObjetoNecesario: 
@@ -788,6 +834,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 5619358429834098966}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &6175427432775238195
 GameObject:
@@ -872,15 +930,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 1639969676633806831, guid: 7a3be93030fa51945b7d74f8e66783dc, type: 3}
+  m_Color: {r: 0.08, g: 0.05, b: 0.03, a: 0.45}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!61 &6625712727004235493
@@ -920,10 +978,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2, y: 2.8}
+    newSize: {x: 2, y: 2.8}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -941,14 +999,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5731577b51e10964999a13ca8c54806a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZonaInteractiva
-  mensajeAlMirar: "Aqu\xED va una t'antawawa."
-  mensajeExito: "La t'antawawa tiene la cara de la abuela\u2026"
+  mensajeAlMirar: Falta la t'antawawa.
+  mensajeExito: "La t'antawawa tiene la cara de la abuela\u2026\n<i>\u2026algo cambi\xF3
+    en la casa.</i>"
   mensajeObjetoIncorrecto: "Eso no sirve aqu\xED."
   mensajeDespuesDeUsar: 
   idObjetoNecesario: tantawawa
   consumirObjeto: 1
   soloUnaVez: 1
-  sonidoExito: {fileID: 0}
+  sonidoExito: {fileID: 8300000, guid: 9f7867c14cf91954690f3b63f6fc977d, type: 3}
   alTenerExito:
     m_PersistentCalls:
       m_Calls:
@@ -963,6 +1022,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6175427432775238195}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4995902346503724194}
         m_TargetAssemblyTypeName: MesaTodosSantos, Assembly-CSharp
@@ -1059,15 +1130,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -126024803215048264, guid: 575c70097999576409c97aee52afb63e, type: 3}
+  m_Color: {r: 0.08, g: 0.05, b: 0.03, a: 0.45}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.2, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!61 &5627956228911705735
@@ -1107,10 +1178,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.2, y: 3}
+    newSize: {x: 2.2, y: 3}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -1128,14 +1199,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5731577b51e10964999a13ca8c54806a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZonaInteractiva
-  mensajeAlMirar: "Faltan flores y ca\xF1a."
-  mensajeExito: Las flores huelen a la casa de la abuela.
+  mensajeAlMirar: Faltan flores.
+  mensajeExito: "Las flores huelen a la casa de la abuela.\n<i>\u2026algo cambi\xF3
+    en la casa.</i>"
   mensajeObjetoIncorrecto: "Eso no sirve aqu\xED."
   mensajeDespuesDeUsar: 
   idObjetoNecesario: flores
   consumirObjeto: 1
   soloUnaVez: 1
-  sonidoExito: {fileID: 0}
+  sonidoExito: {fileID: 8300000, guid: 9f7867c14cf91954690f3b63f6fc977d, type: 3}
   alTenerExito:
     m_PersistentCalls:
       m_Calls:
@@ -1150,6 +1222,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6181522464941505378}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4995902346503724194}
         m_TargetAssemblyTypeName: MesaTodosSantos, Assembly-CSharp
@@ -1191,7 +1275,7 @@ Transform:
   m_GameObject: {fileID: 6614242625022152375}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4, y: -3.65, z: 0}
+  m_LocalPosition: {x: 3.4, y: -2.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1670,15 +1754,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 4
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 5617427968529453703, guid: 17abdfaa1fdc2c849bc793f9dcb22b29, type: 3}
+  m_Color: {r: 0.08, g: 0.05, b: 0.03, a: 0.45}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.8, y: 3.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!61 &5604276012505666143
@@ -1718,10 +1802,10 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.8, y: 3.6}
+    newSize: {x: 1.8, y: 3.6}
+    adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
@@ -1739,14 +1823,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5731577b51e10964999a13ca8c54806a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZonaInteractiva
-  mensajeAlMirar: "Aqu\xED va la escalera de pan, para que el alma pueda bajar."
-  mensajeExito: "La escalera ya est\xE1 en su lugar."
+  mensajeAlMirar: Falta la escalera de pan.
+  mensajeExito: "La escalera ya est\xE1 en su lugar.\n<i>\u2026algo cambi\xF3 en
+    la casa.</i>"
   mensajeObjetoIncorrecto: "Eso no sirve aqu\xED."
   mensajeDespuesDeUsar: 
   idObjetoNecesario: escalera
   consumirObjeto: 1
   soloUnaVez: 1
-  sonidoExito: {fileID: 0}
+  sonidoExito: {fileID: 8300000, guid: 9f7867c14cf91954690f3b63f6fc977d, type: 3}
   alTenerExito:
     m_PersistentCalls:
       m_Calls:
@@ -1761,6 +1846,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7923650375213706557}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 4995902346503724194}
         m_TargetAssemblyTypeName: MesaTodosSantos, Assembly-CSharp

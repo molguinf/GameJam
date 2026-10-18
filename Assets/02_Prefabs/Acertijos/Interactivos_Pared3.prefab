@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7937117545577836037}
+  - component: {fileID: 6364591629123865001}
   m_Layer: 0
   m_Name: Interactivos_Pared3
   m_TagString: Untagged
@@ -44,6 +45,39 @@ Transform:
   - {fileID: 4358048027492480994}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6364591629123865001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180492595238752134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f85aa268946ac4a81b3231d6adaff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PistaAlEntrar
+  pistas:
+  - mensaje: "Un caj\xF3n no cierra bien."
+    requiereActivo: {fileID: 8056340339176180698}
+    requiereInactivo: {fileID: 0}
+    soloUnaVez: 0
+    yaMostrada: 0
+    ultimaVez: -9999
+  - mensaje: "El horno tiene un candado extra\xF1o."
+    requiereActivo: {fileID: 6999298882225763393}
+    requiereInactivo: {fileID: 0}
+    soloUnaVez: 0
+    yaMostrada: 0
+    ultimaVez: -9999
+  - mensaje: "La radio vieja\u2026 \xBFtodav\xEDa funcionar\xE1?"
+    requiereActivo: {fileID: 6116577511880868297}
+    requiereInactivo: {fileID: 1486550752920338523}
+    soloUnaVez: 0
+    yaMostrada: 0
+    ultimaVez: -9999
+  segundosDeEspera: 0.4
+  segundosParaRepetir: 45
 --- !u!1 &850297793927574715
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 850297793927574715}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: -1.2, z: 0}
+  m_LocalPosition: {x: 0.6, y: -0.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -800,7 +834,7 @@ Transform:
   m_GameObject: {fileID: 2457894764348242355}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.4, y: -1.3, z: 0}
+  m_LocalPosition: {x: -4.4, y: -1.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1055,8 +1089,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -0.6}
-  m_SizeDelta: {x: 2.5, y: 0.6}
+  m_AnchoredPosition: {x: 0, y: -0.62}
+  m_SizeDelta: {x: 1.5, y: 0.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &5584595685028681235
 MeshRenderer:
@@ -1137,7 +1171,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColor: {r: 0.17, g: 0.11, b: 0.07, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1154,8 +1188,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 2.8
+  m_fontSizeBase: 2.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1171,7 +1205,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
+  m_TextWrappingMode: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -1555,8 +1589,8 @@ MonoBehaviour:
   textoDial: {fileID: 7971598276385827514}
   fuenteRadio: {fileID: 4658283607857023180}
   sonidoEstatica: {fileID: 8300000, guid: ee8e6b02e52ed8c4d88d6ea1f1e86be1, type: 3}
-  vozAbuela: {fileID: 8300000, guid: 96f0d287104f60b49baac4eb80b586bf, type: 3}
-  sonidoClicPerilla: {fileID: 0}
+  vozAbuela: {fileID: 8300000, guid: 3734cc4d4b91b9348a1f708ef4f3ca74, type: 3}
+  sonidoClicPerilla: {fileID: 8300000, guid: 0c0a6b21f89be454289627bb2e46e276, type: 3}
   mensajeEstatica: "Solo se escucha est\xE1tica\u2026"
   mensajeSintonizada: "\"\xBFPor qu\xE9 nadie viene, wawa?\u2026 cuatro\u2026 uno\u2026
     nueve\u2026\""
@@ -1758,6 +1792,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2725707467587546241}
   - component: {fileID: 7093517006590293201}
+  - component: {fileID: 1822043809584320052}
+  - component: {fileID: 8465457614226804865}
   m_Layer: 0
   m_Name: Horno
   m_TagString: Untagged
@@ -1840,6 +1876,75 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!61 &1822043809584320052
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999298882225763393}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.8, y: 4}
+    newSize: {x: 4.8, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4.8, y: 4}
+  m_EdgeRadius: 0
+--- !u!114 &8465457614226804865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6999298882225763393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5731577b51e10964999a13ca8c54806a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZonaInteractiva
+  mensajeAlMirar: "Un candado de s\xEDmbolos."
+  mensajeExito: 
+  mensajeObjetoIncorrecto: "Eso no sirve aqu\xED."
+  mensajeDespuesDeUsar: 
+  idObjetoNecesario: 
+  consumirObjeto: 1
+  soloUnaVez: 0
+  sonidoExito: {fileID: 0}
+  alTenerExito:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7032657543589016652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1943,6 +2048,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1583115478174056943}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6999298882225763393}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
