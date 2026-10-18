@@ -1589,7 +1589,7 @@ MonoBehaviour:
   textoDial: {fileID: 7971598276385827514}
   fuenteRadio: {fileID: 4658283607857023180}
   sonidoEstatica: {fileID: 8300000, guid: ee8e6b02e52ed8c4d88d6ea1f1e86be1, type: 3}
-  vozAbuela: {fileID: 8300000, guid: 3734cc4d4b91b9348a1f708ef4f3ca74, type: 3}
+  vozAbuela: {fileID: 8300000, guid: 96f0d287104f60b49baac4eb80b586bf, type: 3}
   sonidoClicPerilla: {fileID: 8300000, guid: 0c0a6b21f89be454289627bb2e46e276, type: 3}
   mensajeEstatica: "Solo se escucha est\xE1tica\u2026"
   mensajeSintonizada: "\"\xBFPor qu\xE9 nadie viene, wawa?\u2026 cuatro\u2026 uno\u2026

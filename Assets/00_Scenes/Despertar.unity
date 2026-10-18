@@ -1537,7 +1537,7 @@ MonoBehaviour:
     segundosAutomatico: 3
   - imagen: {fileID: 214443842}
     texto: "\"Volviste, wawa\u2026\""
-    sonido: {fileID: 8300000, guid: 96f0d287104f60b49baac4eb80b586bf, type: 3}
+    sonido: {fileID: 8300000, guid: 3734cc4d4b91b9348a1f708ef4f3ca74, type: 3}
     esperarClic: 1
     segundosAutomatico: 3
   - imagen: {fileID: 1319039772}
